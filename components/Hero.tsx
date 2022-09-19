@@ -24,7 +24,7 @@ function Hero({}: Props) {
           width={130}
         />
       </div>
-      <div>
+      <div className="z-20">
         <h2 className="text-sm uppercase text-gray-500 mt-[-30px] pb-2 tracking-[15px]">
           {" "}
           Software Engineer
