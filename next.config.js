@@ -4,7 +4,7 @@ const nextConfig = {
   swcMinify: true,
 
   images: {
-    domains: ["i.ibb.co"],
+    domains: ["i.ibb.co", "cdn.sanity.io"],
   },
 };
 

@@ -1,10 +1,14 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Project } from "../typings";
+import { urlFor } from "../sanity";
 
-type Props = {};
+type Props = {
+  projects: Project[];
+};
 
-function Projects({}: Props) {
-  const projects = [1, 2, 3];
+function Projects({ projects }: Props) {
+  // const projects = [1, 2, 3];
 
   return (
     <motion.div
@@ -27,17 +31,30 @@ function Projects({}: Props) {
               transition={{ duration: 1.2 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              src="https://www.pngmart.com/files/22/Andres-Iniesta-PNG-File.png"
+              src={urlFor(project?.image).url()}
+              className="w-[170px]"
               alt=""
             />
-            <div className="space-y-10 px-0 md:px-10 max-w-6xl">
+            <div className="space-y-6 px-0 md:px-10 max-w-6xl">
               <h4 className="text-2xl font-semibold text-center ">
                 <span className="underline decoration-[#f7ab0a]/50">
                   {" "}
                   Case Study of {i + 1} of {projects.length}
                 </span>
               </h4>
-              <p className="text-lg text-center md:text-left">Loreum epsum</p>
+              <p className="text-lg text-center md:text-left">
+                {project.title}
+              </p>
+
+              <div className="flex items-center space-x-2 justify-center">
+                {project?.technologies.map((technology) => (
+                  <img
+                    className="h-10 w-10"
+                    key={technology._id}
+                    src={urlFor(technology.image).url()}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         ))}
